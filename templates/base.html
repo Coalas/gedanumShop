@@ -1,0 +1,140 @@
+{% load i18n satchmo_category satchmo_google satchmo_util satchmo_currency satchmo_discounts app_plugins normalize_decimal %}
+{% block doctype %}<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+{% endblock %}
+<head>
+    {% block extra-head %}{% endblock %}
+    {% block stylesheet %}
+    <link rel="stylesheet" href="{{ media_url }}css/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ media_url }}css/reset.css" media="screen" title="html5doctor.com Reset Stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ media_url }}css/css3.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ media_url }}css/general.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ media_url }}css/grid.css" media="screen" />
+    <link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+    <!-- @font-face provided by google, works on 97% of browsers -->
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+    {% endblock %}
+    <title>{% block title %}{{ shop_name }}{% if pagetitle %}: {{ pagetitle }}{% endif %}{% endblock %}</title>
+    {% plugin_point "page_head" %}
+</head>
+{% block body %}
+<body onload="draw();" {% if bodyid %} id="{{ bodyid }}"{% endif %}{% if bodyclass %} class="{{ bodyclass }}"{% endif %}>
+    {% plugin_point "page_top" %}
+    <div class="bar">
+<div class="row">
+<div class="left col col_8 phone"><img src="{{ media_url }}images/phone.png" height="29px" width="29px"/> (058) 555 555 555</div>
+<div class="right align_right col col_8">
+<div id="cartTotal"></div>
+<a class="white_text" href="#">Zaloguj</a></div>
+</div>
+</div>
+<div id="bodywrap">
+<div id="bottom-bg">
+<div class="row">
+    <header>
+        <div class="logo left"><a href="/">{{ shop_name }}</a></div>
+        
+        <div class="statement right">
+        <nav>
+            <ul>
+                <li><a href="/">Start</a></li>
+                <li class="active"><a href="css3.html">O Nas</a></li>
+                <li><a href="canvas.html">Oferta</a></li>
+                <li><a href="http://52framework.com/documentation">Współpraca</a></li>
+                <li><a href="http://52framework.com/about">Kontakt</a></li>
+            </ul>
+        </nav>
+        </div>
+        <div class="clear"></div>
+    </header>
+<div class="clear"></div>
+<div class="col_16"><img src="{{ media_url }}images/kamel_07.jpg" width="960" height="354" alt="gdansk"></div>
+<div class="col_5 col ">
+ <div class="sidebar-box-wrap">
+    <div class="sidebar-box">
+    <span class="sidebar-box-title">{% trans "Shop Categories" %}</span>
+     {% block sidebar-secondary %}
+        <div>
+            {% satchmo_search_form %}
+        </div>
+        <div>
+            {% block sidebar %}
+            <h3></h3>
+            {% block sidebar-categories %}
+            <div id="menu_container">
+                {% if category.id %}
+                    {% category_tree category.id %}
+                {% else %}
+                    {% if product.get_category %}
+                        {% category_tree product.get_category.id %}
+                    {% else %}
+                        {% category_tree %}
+                    {% endif %}
+                {% endif %}
+            </div>
+            {% endblock sidebar-categories %}
+            
+            {% block sidebar-secondary-bottom %}
+            {% plugin_point "sidebar_secondary_bottom" %}
+            {% endblock %}
+            {% endblock sidebar %}
+        </div>
+        {% endblock sidebar-secondary %} 
+    </div>
+  </div>
+  <!-- end sidebar -->
+</div><!--col_5 -->
+<div class="col_11 col">
+{% block content %}{% endblock %}
+</div> <!-- content col_11-->
+<!-- end wrap -->
+<div class="row">
+<div class="col_16">
+
+</div><!-- col 16 -->
+</div>
+
+</div>
+</div>
+<footer class="row">
+<div id="footer_top"></div>
+<div id="footer_body">
+{% block footer %}
+{% blocktrans %}
+<section class="col_4 col white_text">
+   F.H.U. Kamel <br/>
+   ul. Toruńska 20<br/>
+   Gdańsk
+</section>
+<section class="col_4 col white_text">
+   F.H.U. Kamel <br/>
+   ul. Toruńska 20<br/>
+   Gdańsk
+</section>
+<section class="col_4 col white_text">
+ F.H.U. Kamel <br/>
+   ul. Toruńska 20<br/>
+   Gdańsk
+</section>
+<section class="col_4 col white_text">
+ F.H.U. Kamel <br/>
+   ul. Toruńska 20<br/>
+   Gdańsk   
+</section>
+{% endblocktrans %}
+{% endblock %}
+</div>
+</footer>
+ {% block page-close %}
+ {% block google-tracker %}
+ {% if shop.options.GOOGLE.ANALYTICS.value %}
+ {% show_tracker is_secure %}
+ {% endif %}
+ {% endblock %}
+ {% endblock %}
+</body>
+{% endblock %}
+</html>
