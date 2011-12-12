@@ -1,4 +1,4 @@
-# Django settings for satchmo project.
+# -*- coding: UTF-8 -*-
 # This is a recommended base setting for further customization
 import os
 
@@ -23,7 +23,7 @@ TIME_ZONE = 'US/Pacific'
 LANGUAGE_CODE = 'pl-PL'
 L10N_SETTINGS = {
   'currency_formats' : {
-     'PLN' : {'symbol': u'zl', 'positive' : u"zl %(val)0.2f", 'negative': u"zl (%(val)0.2f)",
+     'PLN' : {'symbol': u'zł', 'positive' : u"zł %(val)0.2f", 'negative': u"zł (%(val)0.2f)",
                'decimal' : ','},
   },
   'default_currency' : 'PLN',
