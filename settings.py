@@ -21,7 +21,15 @@ TIME_ZONE = 'US/Pacific'
 # http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
 # http://blogs.law.harvard.edu/tech/stories/storyReader$15
 LANGUAGE_CODE = 'pl-PL'
-
+L10N_SETTINGS = {
+  'currency_formats' : {
+     'PLN' : {'symbol': u'zl', 'positive' : u"zl %(val)0.2f", 'negative': u"zl (%(val)0.2f)",
+               'decimal' : ','},
+  },
+  'default_currency' : 'PLN',
+  'show_admin_translations': False,
+  'allow_translation_choice': False,
+}
 SITE_ID = 1
 
 # Absolute path to the directory that holds media.

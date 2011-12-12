@@ -1,5 +1,4 @@
-# this is an extremely simple Satchmo standalone store.
-
+# -*- coding: UTF-8 -*-
 import logging
 import os, os.path
 
@@ -16,9 +15,9 @@ SATCHMO_DIRNAME = DIRNAME
     
 gettext_noop = lambda s:s
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pl-PL'
 LANGUAGES = (
-   ('en', gettext_noop('English')),
+   ('pl', gettext_noop('Polish')),
 )
 
 #These are used when loading the test data
