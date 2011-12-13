@@ -236,15 +236,13 @@ background-color: white;
 #wishlist form {
 	display: inline;
 }
-
+#menu_container {
+	font-size: 1.3em;
+}
 #menu_container a {
-display: block;
-color: #FFF;
-background-color: #7F7F7F;
-width: 9em;
+width: 12em;
 padding: 3px 17px 3px 8px;
 text-decoration: none;
-border-bottom: 1px solid #fff;
 font-weight: bold;
 }
 
@@ -254,24 +252,17 @@ color: #FFF;
 }
 
 #menu_container li li a {
-display: block;
-color: #FFF;
-background-color: #C0C0C0;
-width: 9em;
+width: 12em;
 padding: 3px 8px 3px 17px;
 text-decoration: none;
-border-bottom: 1px solid #fff;
 font-weight: normal;
 }
 
 #menu_container li li li a {
-display: block;
-color: #FFF;
-width: 9em;
-background-color: #C0C0C0;
+color: gray;
+width: 12em;
 padding: 3px 1px 3px 24px;
 text-decoration: none;
-border-bottom: 1px solid #fff;
 font-weight: normal;
 }
 

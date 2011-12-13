@@ -2,7 +2,9 @@
 {% load i18n %}
 {% load thumbnail %}
 {% load satchmo_util %}
-
+{% load satchmo_price %}
+{% load satchmo_currency %}
+{% load satchmo_util satchmo_discounts %}
 {% block navbar %}
    <li class="first">{% trans "Home" %}</li>
 {% endblock %}
@@ -23,7 +25,8 @@
 <div id="buy_box">
 <a href="{{ product.get_absolute_url }}">{{ product.translated_name }}</a>
 <br/>
-{% trans "Price" %} {{ product.unit_price }}
+{% if sale %}<strike id="fullprice" style="display: block;">{{ product|discount_price:""|currency }}</strike>{% endif %}
+<span id="price">{{ product|discount_price:sale|currency }}</span>
 <br/>
 <span class="left buy"><a href="#"></a></span>
 </div>

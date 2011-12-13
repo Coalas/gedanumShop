@@ -87,7 +87,7 @@ blockquote.left {border-right:1px dashed #ccc; width:35%;} /* float blockquote l
 blockquote.right {border-left:1px dashed #ccc; width:35%;} /* float blockquote right and set a width */
 
 /* ** ** Header Styles ** ** */
-h1, h2, h3, h4, h5 {margin:0 0 0.5em; line-height:1.1em;}
+h1, h2, h3, h4, h5 {margin:0 0 0.5em; line-height:1.2em;}
 h1 {	font-size:2.52em;} 
 h2 {	font-size:1.952em;} 
 h3 {	font-size:1.652em;} 
