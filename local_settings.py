@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 import logging
 import os, os.path
+import socket
 
 LOCAL_DEV = True
 DEBUG = True
@@ -49,6 +50,11 @@ SECRET_KEY = 'EXAMPLE SECRET KEY'
 SITE_DOMAIN = "localhost"
 SITE_NAME = "Simple Satchmo"
 
+try:
+    HOSTNAME = socket.gethostname()
+except:
+    HOSTNAME = 'localhost'
+    
 # not suitable for deployment, for testing only, for deployment strongly consider memcached.
 CACHE_BACKEND = "locmem:///"
 CACHE_TIMEOUT = 60*5

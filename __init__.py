@@ -5,7 +5,9 @@ from django.utils.translation import ugettext as _
 from livesettings import config_value
 from product.views import display_featured
 from satchmo_utils.views import bad_or_missing
-
+from product.models import Category, Product
+from product.utils import find_best_auto_discount
+from product.signals import index_prerender
 def category_view_kamel(request, slug, parent_slugs='', template='product/category.html'):
     """Display the category, its child categories, and its products.
 
