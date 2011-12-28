@@ -26,24 +26,34 @@
     <div class="bar">
 <div class="row">
 <div class="left col col_8 phone"><img src="{{ media_url }}images/phone.png" height="29px" width="29px"/> (058) 555 555 555</div>
-<div class="right align_right col_6">
+<div class="right align_right col_7">
 
 <div class="header-nav">
 <ul>
 <li id="nav-cart" class="nav-replace">
-<a class="" href="/cart/">Twój koszyk</a>
-<em>
-<a id="cart_count" href="/cart/">0</a>
-</em>
+{% url satchmo_cart as carturl %}
+{% if carturl %}<a href="{{ carturl }}">{% trans "Cart" %}</a>{% endif %}
+{% if not cart.is_empty %}
+({{ cart_count|normalize_decimal }} - {% if sale %}{{ cart|discount_cart_total:sale|currency }}{% else %}{{cart.total|currency}}{% endif%}) <br/>
+{% endif %}
 </li>
 <li id="nav-country" class="nav-replace"></li>
+{% if user.is_staff %} <li class="nav-replace"><a href="{% url admin:index %}" target="blank">{% trans "Admin"%}</a></li>
+{% endif %}
+{% if user.is_authenticated %}
+{% url satchmo_account_info as accounturl %}
+{% if accounturl %}
+<li class="nav-replace"><a	href="{{ accounturl }}" target="blank">{% trans "Account Details" %}</a></li>
+{% endif %}
+<li class="nav-replace"><a	href="{{ logout_url }}?next={{request.path}}">
+{% trans "Log out" %}</a></li>
+{% else %}
+<li class="nav-replace"><a href="{{ login_url }}?next={{request.path}}">{% trans "Log in" %}</a></li>
 <li id="nav-register" class="nav-replace">
 <a href="/accounts/register/">Zarejestruj</a>
 </li>
-<li class="nav-replace"><a href="/accounts/login/">
-<span>Zaloguj</span>
-</a>
-</li>
+{% endif %}
+
 </ul>
 </div>
 </div><!-- header cart -->
