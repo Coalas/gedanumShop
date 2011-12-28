@@ -24,7 +24,12 @@ inspired by the http://www.1kbgrid.com/
 	width: auto;
 	display: inline-block;
 }
-
+.grid {
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
 /* Column widths, and element width based on grid */
 
 .col_1, .width_1	 {	width:40px;	 }

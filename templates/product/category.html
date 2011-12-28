@@ -3,6 +3,8 @@
 {% load thumbnail %}
 {% load satchmo_category %}
 {% load satchmo_util satchmo_discounts %}
+{% load satchmo_price %}
+{% load satchmo_currency %}
 {% block extra-head %}
 {% if category.meta %}
     <meta name="description" content="{{ category.meta|escape }}">
@@ -41,6 +43,8 @@
             <li>{% thumbnail product.main_image.picture 100x85 as image %}
             <a href="{{ product.get_absolute_url }}"><img src="{{ image }}" width="{{ image.width }}" height="{{ image.height }}" /></a>
             <a href="{{ product.get_absolute_url }}">{{ product.translated_name }}</a></li>
+            {% if sale %}<strike id="fullprice" style="display: block;">{{ product|discount_price:""|currency }}</strike>{% endif %}
+            <span id="price">{{ product|discount_price:sale|currency }}</span>
         {% if forloop.last %} </ul> {% endif %}
     {% endfor %}
 <!-- {% if child_categories %}

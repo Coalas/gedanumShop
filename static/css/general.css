@@ -36,6 +36,11 @@ footer { font-size:.8em; background:#780e12; height:359px;}
 .buy { background:url(../images/cart_1.png); width:29px; height:26px; display:block;}
 #buy_box{margin:0 0 0 20px; font:Arial, Helvetica, sans-serif; font-size: medium; font-weight: bold; color:#690;}
 .deco h3, h4{ padding: 0 25px;background:url(../images/kamel_14.jpg) no-repeat; font-family: 'Righteous', cursive; font-size:1.5em;}
+.thumbnail {
+    font-size: 13px;
+    line-height: 18px;
+    position: relative;
+}
 /*------------------------------------------------*/
 /*-------------------[SIDEBAR]--------------------*/
 /*------------------------------------------------*/

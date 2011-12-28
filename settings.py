@@ -91,6 +91,9 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(DIRNAME,'templates'),
 )
+DOTID = '4536'
+DOTPIN = ''
+DOTURL = ''
 
 INSTALLED_APPS = (
     'django.contrib.sites',
@@ -114,6 +117,8 @@ INSTALLED_APPS = (
     'tax.modules.area',
     'tax.modules.percent',
     'shipping',
+    'dotpay',
+    'dotpay.payment',
     #'satchmo_store.contact.supplier',
     #'shipping.modules.tiered',
     #'satchmo_ext.newsletter',
