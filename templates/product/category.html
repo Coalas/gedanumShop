@@ -33,19 +33,23 @@
         {% endfor %}
 {% endif %}
 {% else %}
-{% if category.translated_description %}<p class="product_category_description">{{ category.translated_description }}</p>{% endif %}
-    {% if category.main_image %}
+{% if category.translated_description %}<p class="product_category_description">{{ category.translated_description }}
+{% if category.main_image %}
            {% thumbnail category.main_image.picture 85x85 as image %}
            <img src="{{ image }}" width="{{ image.width }}" height="{{ image.height }}" />
     {% endif %}
+</p>{% endif %}
+    
     {% for product in products %}
-        {% if forloop.first %} <ul>  {% endif %}
-            <li>{% thumbnail product.main_image.picture 100x85 as image %}
+        {% if forloop.first %}   {% endif %}
+            <div class="col thumbnail width_5" >{% thumbnail product.main_image.picture 275x140 as image %}
             <a href="{{ product.get_absolute_url }}"><img src="{{ image }}" width="{{ image.width }}" height="{{ image.height }}" /></a>
-            <a href="{{ product.get_absolute_url }}">{{ product.translated_name }}</a></li>
+            </br><a href="{{ product.get_absolute_url }}">{{ product.translated_name }}</a>
+            </br>
             {% if sale %}<strike id="fullprice" style="display: block;">{{ product|discount_price:""|currency }}</strike>{% endif %}
             <span id="price">{{ product|discount_price:sale|currency }}</span>
-        {% if forloop.last %} </ul> {% endif %}
+            </div>
+        {% if forloop.last %}  {% endif %}
     {% endfor %}
 <!-- {% if child_categories %}
         {% for cat in child_categories %}
