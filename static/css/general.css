@@ -16,6 +16,50 @@ body {margin: 0px; padding: 0px 0px 0px 0px; color: #413f36; background-color:#f
    padding-right: 0;
    width: 50px;
 }
+table#cart td, table.ordertable td {
+    border: 1px dotted #E0E0E0;
+    padding: 8px;
+}
+table#cart{width:100%;}
+.checkout a, .checkout a:link, .checkout a:visited, .checkout a:active {
+    background-image: url("../images/n-checkout.gif");
+    background-position: left top;
+    color: #FFFFFF;
+    display: block;
+    float: right;
+    height: 21px;
+    margin-top: 10px;
+    padding-left: 21px;
+    padding-top: 6px;
+    text-decoration: none;
+    width: 91px;
+}
+.checkout a:hover, .checkout a:hover:visited {
+    background-position: left bottom;
+}
+.shoppingcart input {
+    background-image: url("../images/n-shoppingcart.gif");
+    background-position: center top;
+    border: medium none;
+    border-radius: 4px 4px 4px 4px;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-size: 12px;
+    height: 44px;
+    margin: 8px 0 0;
+    padding-left: 30px;
+    text-align: left;
+    text-decoration: none;
+    width: 200px;
+}
+.shoppingcart input:hover {
+    background-position: center bottom;
+}
+form#options input {
+    display: inline;
+    margin: 1em;
+}
 .logo, h1, h2, h3, h4, h5 { font-family: 'Yanone Kaffeesatz', arial, serif; }
 .logo a { color:#ffffff; text-decoration:none; }
 .logo a:hover, a:focus, a:active, a:visited { text-decoration:none;}

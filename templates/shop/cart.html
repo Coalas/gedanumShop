@@ -29,7 +29,7 @@
     <h4>{% trans "Your cart is empty." %}</h4>
 {% else %}
     <h4>{% trans "Your Cart" %}</h4>
-    <table><tr><th></th>
+    <table id="cart"><tr><th></th>
     <th align="left">{% trans "Quantity" %}</th>
     <th>{% trans "Item" %}</th>
     {% if sale %}
@@ -69,7 +69,8 @@
     {% if sale %}
 	{% include "product/some_discount_eligible.html" %}
 	{% endif %}
-
+    <div class="checkout">
     <a href="{% url satchmo_checkout-step1 %}">{% trans "Check out" %}</a>
+    </div>
 {% endif %}
 {% endblock %}
