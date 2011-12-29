@@ -63,7 +63,7 @@ form#options input {
 .logo, h1, h2, h3, h4, h5 { font-family: 'Yanone Kaffeesatz', arial, serif; }
 .logo a { color:#ffffff; text-decoration:none; }
 .logo a:hover, a:focus, a:active, a:visited { text-decoration:none;}
-#bodywrap {width: 100%; background-image: url(../images/bg-2.jpg); background-repeat: no-repeat; background-position: top center; padding:56px 0px 0px 0px; }
+#bodywrap {width: 100%; background-image: url(../images/bg-2.jpg); background-repeat: no-repeat; background-position: top center; padding:5px 0px 0px 0px; }
 #bottom-bg {width: 100%; background-image: url(../images/bg-3.jpg); background-repeat: no-repeat; background-position: bottom center; padding-bottom: 90px;}
 header {height:112px; position:relative; margin-bottom:5px;}
 header .logo {font-size:2.5em; height:52px; padding-top:28px; font-weight:700; text-shadow:1px 1px 2px #000; color:#fff; filter: Shadow(Color=#666666, Direction=135, Strength=3);}
@@ -104,9 +104,13 @@ footer { font-size:.8em; background:#780e12; height:359px;}
     float: left;
     list-style: none outside none;
     margin-left: 10px;
+    display:inline;
 }
 .header-nav ul li a {
     color: #FFFFFF;
+}
+.header-nav ul {
+    margin: 10px 0 0 10px;
 }
 /*------------------------------------------------*/
 /*-------------------[SIDEBAR]--------------------*/
@@ -186,7 +190,7 @@ ul.products {
     width: 100%;
 }
 #featured-box {
-height:220px;
+height:785px;
 width:97%;
 background-color:#fffdfa;
 border:solid 7px #e7e3a8;-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;

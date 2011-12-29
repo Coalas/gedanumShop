@@ -27,8 +27,7 @@
 <br/>
 {% if sale %}<strike id="fullprice" style="display: block;">{{ product|discount_price:""|currency }}</strike>{% endif %}
 <span id="price">{{ product|discount_price:sale|currency }}</span>
-<br/>
-<span class="left buy"><a href="#"></a></span>
+
 </div>
 </div>
 {% endfor %}
