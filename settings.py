@@ -90,6 +90,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(DIRNAME,'templates'),
+    os.path.join(DIRNAME,'localsite/templates'),
 )
 DOTID = '4536'
 DOTPIN = ''
