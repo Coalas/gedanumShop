@@ -2,6 +2,7 @@
 import sys
 import xlrd
 import copy
+import tax.config
 from decimal import Decimal
 from os.path import join, abspath, dirname
 # adjust path if needed, assumes this file is located in a folder
@@ -27,15 +28,15 @@ def import_products():
         join(dirname(abspath(__file__)), 'file.xls'))
     sheet = book.sheet_by_index(0)
     # create the categories first
-    categories = []
-    for row_no in range(1, sheet.nrows):
-        row = sheet.row_values(row_no)
-        # mulitple categories can by separated with pipe
-        for category in row[4].split('|'):
-            if not category in categories:
-                categories.append(category)
-    for category in categories:
-        _create_category(category)
+#    categories = []
+#    for row_no in range(1, sheet.nrows):
+#        row = sheet.row_values(row_no)
+#        # mulitple categories can by separated with pipe
+#        for category in row[4].split('|'):
+#            if not category in categories:
+#                categories.append(category)
+    #for category in categories:
+       # _create_category(category)
     # if needed, create product attribute(s) here
     #_create_product_attribute()
 
@@ -137,7 +138,7 @@ def _create_product(row):
     if row[21]:
         p.height = Decimal(str(row[21]))
     p.height_units = row[22]
-    p.taxClass = TaxClass.objects.get(title='Default')
+    p.taxClass = TaxClass.objects.get(title='Kartka')
     p.taxable = True
     p.save()
     # add a product attribute
