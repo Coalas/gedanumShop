@@ -147,7 +147,7 @@ footer { font-size:.8em; background:#780e12; height:359px;}
 a {	color:#525252;	}
 a:hover, a:focus { text-decoration:underline;}
 a:active, a:visited { }
-
+#dotpay {margin: 20px auto;text-align: center;float:none;position: relative;}
 blockquote {
 		font-family: Georgia,"Times New Roman", Times, serif; 
 		margin:5px; 
