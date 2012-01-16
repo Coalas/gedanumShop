@@ -25,7 +25,7 @@ def import_products():
     Import excel data into satchmo.
     """
     book = xlrd.open_workbook(
-        join(dirname(abspath(__file__)), 'file.xls'))
+        join(dirname(abspath(__file__)), 'kwiaty.xls'))
     sheet = book.sheet_by_index(0)
     # create the categories first
 #    categories = []
