@@ -75,6 +75,7 @@ header nav {color:#790e11; height:30px;font-family: 'Righteous', cursive; font-s
 	nav ul li a:hover, nav ul li.active a {color:#fff;}
 aside {min-height:525px;}
 footer { font-size:.8em; background:#780e12; height:359px;}
+footer a {color:graytext;}
 #footer_top{background:url(../images/kamel_24.jpg)  repeat-x top #780e12; height:41px;}
 #footer_body { background:url(../images/kamel_27.jpg) repeat-x #780e12; height:318px;}
 .buy { background:url(../images/cart_1.png); width:29px; height:26px; display:block;}
@@ -147,7 +148,7 @@ footer { font-size:.8em; background:#780e12; height:359px;}
 a {	color:#525252;	}
 a:hover, a:focus { text-decoration:underline;}
 a:active, a:visited { }
-#dotpay {margin: 20px auto;text-align: center;float:none;position: relative;}
+#dotpay {margin: 20px auto;text-align: center; position: relative;}
 blockquote {
 		font-family: Georgia,"Times New Roman", Times, serif; 
 		margin:5px; 
