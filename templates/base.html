@@ -13,23 +13,15 @@
     <link rel="stylesheet" type="text/css" href="{{ media_url }}css/css3.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="{{ media_url }}css/general.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="{{ media_url }}css/grid.css" media="screen" />
-    <link rel="stylesheet" href="{{ media_url }}jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ media_url }}css/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
     <link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
     <!-- @font-face provided by google, works on 97% of browsers -->
     <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="{{ media_url }}js/jquery.fancybox-1.3.4.pack.js"></script>
-    <script type="text/javascript" src="{{ media_url }}js/jquery.easing-1.3.pack.js"></script>   
     {% endblock %}
     <title>{% block title %}{{ shop_name }}{% if pagetitle %}: {{ pagetitle }}{% endif %}{% endblock %}</title>
+    {% include "shop/_jquery.html" %}
     {% plugin_point "page_head" %}
-     <script type="text/javascript" charset="utf-8">
-     $(document).ready(function() {
-    	 /* $("a").click(function(event){
-    	     alert("Thanks for visiting!");
-    	   }); */
-        $("a").fancybox();   
-        });
-     </script>
+    {% block extra-script %}{% endblock %}
 </head>
 {% block body %}
 <body onload="draw();" {% if bodyid %} id="{{ bodyid }}"{% endif %}{% if bodyclass %} class="{{ bodyclass }}"{% endif %}>

@@ -15,10 +15,20 @@ ProductVariations or CustomProducts, look for product/detail_xxx.html
 
 {% block extra-head %}
 {% if product.meta %}
-    <meta name="description" content="{{product.meta}}">
+<meta name="description" content="{{product.meta}}">
 {% endif %}
 {% endblock %}
-
+{% block extra-script%}
+<script type="text/javascript" charset="utf-8">
+     $(document).ready(function() {
+          /* $("a").click(function(event){
+             alert("Thanks for visiting!");
+           });*/
+          $("a.group1").fancybox({'showCloseButton':true});
+           
+        });
+</script>
+{% endblock%}
 {% block navbar %}
 <li class="first"><a href="{{ shop_base }}/">{% trans "Home" %}</a></li>
 {% for name, url in product.category.all.0.get_url_name %}
