@@ -92,9 +92,9 @@ TEMPLATE_DIRS = (
     os.path.join(DIRNAME,'templates'),
     os.path.join(DIRNAME,'localsite/templates'),
 )
-DOTID = '4536'
+DOTID = '56954'
 DOTPIN = ''
-DOTURL = ''
+DOTURL = 'http://www.gedanum.pl/thanks'
 
 INSTALLED_APPS = (
     'django.contrib.sites',

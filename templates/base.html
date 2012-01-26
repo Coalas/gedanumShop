@@ -56,7 +56,6 @@
 <a href="/accounts/register/">Zarejestruj</a>
 </li>
 {% endif %}
-
 </ul>
 </div>
 </div><!-- header cart -->
@@ -134,29 +133,29 @@
 <div id="footer_top"></div>
 <div id="footer_body">
 {% block footer %}
-<section class="col_4 col white_text">
- <a href="/static_page/regulations">regulamin</a> <br/>
- płatności<br/>
- dostawa
-</section>
-<section class="col_4 col white_text">
+<div class="col_4 col white_text">
+<a href="/static_page/regulations">Regulamin</a> <br/>
+<a href="/static_page/platnosci">Płatności</a> <br/>
+<a href="/static_page/shipping">Dostawa</a> <br/>
+</div>
+<div class="col_4 col white_text">
  F.H.U. Kamel <br/>
  ul. Toruńska 20<br/>
  80-747 Gdańsk
-</section>
-<section class="col_4 col white_text">
+</div>
+<div class="col_4 col white_text">
  F.H.U. Kamel <br/>
  ul. Toruńska 20<br/>
  80-747 Gdańsk
-</section>
-<section class="col_4 col white_text">
+</div>
+<div class="col_4 col white_text">
  F.H.U. Kamel <br/>
  ul. Toruńska 20<br/>
- 80-747 Gdańsk   
-</section>
+ 80-747 Gdańsk
+</div>
 {% blocktrans %}
 {% endblocktrans %}
-<div class="col_16 col"><br/></div>
+<div class="clear"><br/></div>
 <div id="dotpay" class="col_16">
 <img src="{{ media_url }}images/platnosci/dotpay.jpg"/>
 <img src="{{ media_url }}images/platnosci/visa_electron.jpg"/>

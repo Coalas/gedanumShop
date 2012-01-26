@@ -8,5 +8,5 @@ replacement = url(r'^(?P<parent_slugs>([-\w]+/)*)?(?P<slug>[-\w]+)/$','store.cat
 
 replace_urlpattern(catpatterns, replacement)
 urlpatterns += patterns('',
-    (r'', include('store.localsite.urls'))
+    (r'', include('store.localsite.urls')),(r'^dotpay/', include('dotpay.urls'))
 )

@@ -74,16 +74,15 @@
 																 		  3. Content is rotated 270 degrees.
 	*/
 }
-
+.content_text{
+text-align:justify;
+text-justify:inter-word;	
+}
 .gradient {
 		background: #f3c5bd; /* old browsers */
-
 		background: -moz-linear-gradient(top, #f3c5bd 0%, #e86c57 50%, #ea2803 51%, #ff6600 75%, #c72200 100%); /* firefox */
-		
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3c5bd), color-stop(50%,#e86c57), color-stop(51%,#ea2803), color-stop(75%,#ff6600), color-stop(100%,#c72200)); /* webkit */
-		
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3c5bd', endColorstr='#c72200',GradientType=0 ); /* ie */
-		
 		/* generated with http://www.colorzilla.com/gradient-editor/ */
 	 }
 .gradient_radial {
