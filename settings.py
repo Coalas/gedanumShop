@@ -95,7 +95,7 @@ TEMPLATE_DIRS = (
 DOTID = '56954'
 DOTPIN = ''
 DOTURL = 'http://www.gedanum.pl/thanks'
-
+DOTURLC = 'http://www.gedanum.pl/check'
 INSTALLED_APPS = (
     'django.contrib.sites',
     'satchmo_store.shop',
