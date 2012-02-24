@@ -26,7 +26,7 @@
 <a href="{{ product.get_absolute_url }}">{{ product.translated_name }}</a>
 <br/>
 {% if sale %}<strike id="fullprice" style="display: block;">{{ product|discount_price:""|currency }}</strike>{% endif %}
-<span id="price">{{ product|discount_price:sale|currency }}</span>
+<span id="price">{{ product|discount_price:""|currency }}</span>
 
 </div>
 </div>
