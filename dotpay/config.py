@@ -66,9 +66,9 @@ config_register_list(
         ),
     StringValue(
         PAYMENT_GROUP,
-        'MERCHANT_FUC',
-        description=_('Merchant FUC'),
-        help_text=_('Your FUC code'),
+        'DOTPAY_DOTID',
+        description=_('DOTPAY DOTID'),
+        help_text=_('Your DOTID code'),
         ordering=50
         ),
     StringValue(
@@ -124,7 +124,7 @@ config_register_list(
         'POST_URL',
         description=_('Post URL'),
         help_text=_('The DOTPAY URL for real transaction posting.'),
-        default="https://sis.dotpay.es/sis/realizarPago",
+        default="https://dotpay.pl",
         ordering=120
         ),
     StringValue(
@@ -132,7 +132,7 @@ config_register_list(
         'POST_TEST_URL',
         description=_('Test Post URL'),
         help_text=_('The DOTPAY URL for test transaction posting.'),
-        default="https://dotpay.pl/sis/realizarPago",
+        default="https://dotpay.pl",
         ordering=220
         ),
 

@@ -113,7 +113,7 @@ def confirm_info(request):
                 map(str, (
                         amount,
                         xchg_order_id,
-                        payment_module.MERCHANT_FUC.value,
+                        payment_module.DOTPAY_DOTID.value,
                         payment_module.MERCHANT_CURRENCY.value,
                         "0", #TransactionType
                         url_callback,
@@ -126,7 +126,7 @@ def confirm_info(request):
                 map(str, (
                         amount,
                         xchg_order_id,
-                        payment_module.MERCHANT_FUC.value,
+                        payment_module.DOTPAY_DOTID.value,
                         payment_module.MERCHANT_CURRENCY.value,
                         signature_code,
                         )
@@ -138,7 +138,7 @@ def confirm_info(request):
         'live': live,
         'post_url': post_url,
         'MERCHANT_CURRENCY': payment_module.MERCHANT_CURRENCY.value,
-        'MERCHANT_FUC': payment_module.MERCHANT_FUC.value,
+        'DOTPAY_DOTID': payment_module.DOTPAY_DOTID.value,
         'terminal': terminal,
         'MERCHANT_TITULAR': payment_module.MERCHANT_TITULAR.value,
         'url_callback': url_callback,
@@ -179,7 +179,7 @@ def notify_callback(request):
         if sig_calc != data['Ds_Signature'].lower():
             log.error("Invalid signature. Received '%s', calculated '%s'." % (data['Ds_Signature'], sig_calc))
             return HttpResponseBadRequest("Checksum error")
-        if data['Ds_MerchantCode'] != payment_module.MERCHANT_FUC.value:
+        if data['Ds_MerchantCode'] != payment_module.DOTPAY_DOTID.value:
             log.error("Invalid FUC code: %s" % data['Ds_MerchantCode'])
             return HttpResponseNotFound("Unknown FUC code")
         if int(data['Ds_Terminal']) != int(terminal):

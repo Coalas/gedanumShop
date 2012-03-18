@@ -20,12 +20,6 @@ urlpatterns = patterns('',
     (r'^confirm/$', 'payment.modules.dotpay.views.confirm_info', {'SSL': ssl}, 'DOTPAY_satchmo_checkout-step3'),
     (r'^success/$', 'payment.modules.dotpay.views.success', {'SSL': ssl}, 'DOTPAY_satchmo_checkout-success'),
     (r'^failure/$', 'payment.views.checkout.failure', {'SSL': ssl}, 'DOTPAY_satchmo_checkout-failure'),
-    (
-        r'^notify/$',
-        'payment.modules.dotpay.views.notify_callback',
-        {'SSL': ssl},
-        'DOTPAY_satchmo_checkout-notify_callback'
-        ),
-    (r'^confirmorder/$', 'payment.views.confirm.confirm_free_order',
-       {'SSL' : ssl, 'key' : 'DOTPAY'}, 'DOTPAY_satchmo_checkout_free-confirm')
+    (r'^notify/$', 'payment.modules.dotpay.views.notify_callback', {'SSL': ssl}, 'DOTPAY_satchmo_checkout-notify_callback'),
+    (r'^confirmorder/$','payment.views.confirm.confirm_free_order', {'SSL' : ssl, 'key' : 'DOTPAY'}, 'DOTPAY_satchmo_checkout_free-confirm')
 )
