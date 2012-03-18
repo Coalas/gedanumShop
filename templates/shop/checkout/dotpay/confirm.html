@@ -24,11 +24,16 @@
 {% else %}
 	<input type="hidden" name="description" value="{% blocktrans with order.id as order_id %}Order #{{ order_id }}{% endblocktrans %}" />
 {% endif %}
-<input type="hidden" name="control" value="{{terminal}}" />
+<input type="hidden" name="control"/>
 <input type="hidden" name="amount" value="{{amount}}" />
 <input type="hidden" name="URL" value="{{url_ok}}" />
 <input type="hidden" name="URLC" value="{{url_callback}}" />
-
+<input type="hidden" name="email" value="{{contact.email}}" />
+<input type="hidden" name="firstname" value="{{contact.first_name}}" />
+<input type="hidden" name="lastname" value="{{contact.last_name}}" />
+<input type="hidden" name="street" value="{{order.bill_street1}}" />
+<input type="hidden" name="city" value="{{order.bill_city}}" />
+<input type="hidden" name="postcode" value="{{order.bill_postal_code}}" />
 <!-- <input type="hidden" name="continue" value="{{url_ko}}" /> -->
 <input type="hidden" name="transactionType" value="3" />	{# Autorizacion #}
 <input type="hidden" name="Ds_Merchant_Order" value="{{xchg_order_id}}" />

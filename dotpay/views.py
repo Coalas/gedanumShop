@@ -100,7 +100,8 @@ def confirm_info(request):
     now = datetime.now()
     xchg_order_id = "%07dT%02d%02d" % (order.id, now.minute, now.second)
 
-    amount = "%d" % (order.balance * 100,)    # in cents
+#    amount = "%d" % (order.balance * 100,)    # in cents
+    amount = order.balance
 
     template = lookup_template(payment_module, 'shop/checkout/dotpay/confirm.html')
 
@@ -149,6 +150,7 @@ def confirm_info(request):
         'amount': amount,
         'signature': signature,
         'default_view_tax': config_value('TAX', 'DEFAULT_VIEW_TAX'),
+        'contact':order.contact,
     }
     return render_to_response(template, ctx, context_instance=RequestContext(request))
 confirm_info = never_cache(confirm_info)
