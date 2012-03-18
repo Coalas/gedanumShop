@@ -169,41 +169,42 @@ def notify_callback(request):
     data = request.POST
     log.debug("Transaction data: " + repr(data))
     try:
-        sig_data = "%s%s%s%s%s%s" % (
-                data['Ds_Amount'],
-                data['Ds_Order'],
-                data['Ds_MerchantCode'],
-                data['Ds_Currency'],
-                data['Ds_Response'],
-                signature_code
-                )
-        sig_calc = sha1(sig_data).hexdigest()
-        if sig_calc != data['Ds_Signature'].lower():
-            log.error("Invalid signature. Received '%s', calculated '%s'." % (data['Ds_Signature'], sig_calc))
-            return HttpResponseBadRequest("Checksum error")
-        if data['Ds_MerchantCode'] != payment_module.DOTPAY_DOTID.value:
-            log.error("Invalid FUC code: %s" % data['Ds_MerchantCode'])
-            return HttpResponseNotFound("Unknown FUC code")
-        if int(data['Ds_Terminal']) != int(terminal):
-            log.error("Invalid terminal number: %s" % data['Ds_Terminal'])
-            return HttpResponseNotFound("Unknown terminal number")
+#        sig_data = "%s%s%s%s%s%s" % (
+#                data['Ds_Amount'],
+#                data['Ds_Order'],
+#                data['Ds_MerchantCode'],
+#                data['Ds_Currency'],
+#                data['Ds_Response'],
+#                signature_code
+#                )
+#        sig_calc = sha1(sig_data).hexdigest()
+#        if sig_calc != data['Ds_Signature'].lower():
+#            log.error("Invalid signature. Received '%s', calculated '%s'." % (data['Ds_Signature'], sig_calc))
+#            return HttpResponseBadRequest("Checksum error")
+#        if data['Ds_MerchantCode'] != payment_module.DOTPAY_DOTID.value:
+#            log.error("Invalid FUC code: %s" % data['Ds_MerchantCode'])
+#            return HttpResponseNotFound("Unknown FUC code")
+        if int(data['t_status']) != 2:
+            log.error("Payment not accepted number: %s" % data['t_status'])
+            return HttpResponseNotFound("Platnosc odrzucona")
         # TODO: fields Ds_Currency, Ds_SecurePayment may be worth checking
 
-        xchg_order_id = data['Ds_Order']
+        #xchg_order_id = data['control']
         try:
-            order_id = xchg_order_id[:xchg_order_id.index('T')]
+            #order_id = xchg_order_id[:xchg_order_id.index('T')]
+            order_id = data['control']
         except ValueError:
-            log.error("Incompatible order ID: '%s'" % xchg_order_id)
+            log.error("Incompatible order ID: '%s'" % order_id)
             return HttpResponseNotFound("Order not found")
         try:
             order = Order.objects.get(id=order_id)
         except Order.DoesNotExist:
             log.error("Received data for nonexistent Order #%s" % order_id)
             return HttpResponseNotFound("Order not found")
-        amount = Decimal(data['Ds_Amount']) / Decimal('100')    # is in cents, divide it
-        if int(data['Ds_Response']) > 100:
-            log.info("Response code is %s. Payment not accepted." % data['Ds_Response'])
-            return HttpResponse()
+        amount = Decimal(data['amount'])
+#        if int(data['Ds_Response']) > 100:
+#            log.info("Response code is %s. Payment not accepted." % data['Ds_Response'])
+#            return HttpResponse()
     except KeyError:
         log.error("Received incomplete DOTPAY transaction data")
         return HttpResponseBadRequest("Incomplete data")
@@ -213,7 +214,7 @@ def notify_callback(request):
     payment = processor.record_payment(
         order=order,
         amount=amount,
-        transaction_id=data['Ds_AuthorisationCode'])
+        transaction_id=data['t_id'])
     # empty customer's carts
     for cart in Cart.objects.filter(customer=order.contact):
         cart.empty()

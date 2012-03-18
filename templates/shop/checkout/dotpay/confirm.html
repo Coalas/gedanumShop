@@ -24,7 +24,7 @@
 {% else %}
 	<input type="hidden" name="description" value="{% blocktrans with order.id as order_id %}Order #{{ order_id }}{% endblocktrans %}" />
 {% endif %}
-<input type="hidden" name="control"/>
+<input type="hidden" name="control" value="{{order.id}}"/>
 <input type="hidden" name="amount" value="{{amount}}" />
 <input type="hidden" name="URL" value="{{url_ok}}" />
 <input type="hidden" name="URLC" value="{{url_callback}}" />
