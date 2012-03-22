@@ -118,8 +118,6 @@ INSTALLED_APPS = (
     'tax.modules.area',
     'tax.modules.percent',
     'shipping',
-    #'dotpay',
-    #'dotpay.payment',
     #'satchmo_store.contact.supplier',
     'shipping.modules.tiered',
     #'satchmo_ext.newsletter',
