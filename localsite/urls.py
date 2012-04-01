@@ -6,5 +6,5 @@ from satchmo_store.urls import urlpatterns
 #    (r'example/', 'store.localsite.views.example', {}),
 #)
 urlpatterns = patterns('',
-    (r'^static_page/(?P<page>\w+)/$', 'store.localsite.views.static_page',{}),
+    (r'^static_page/(?P<page>\w+)/$', 'store.localsite.views.static_page',{}),(r'^load_towns$','store.load_towns'),
 )

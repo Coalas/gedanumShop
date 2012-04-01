@@ -11,5 +11,28 @@
 	{% endif %}
     <input type="text" size="20" name="keywords" id="search_keywords" /><br/>
     <input type="submit" value="{% trans "Search" %}" />
- </form>
-
+</form>
+<p>
+<h3>Filtruj wg miejscowości</h3>
+<select name="voivodship" id="voivodship">
+		<option value="">-- Wszystkie --</option>
+		<option value="1">dolnośląskie</option>
+		<option value="2">kujawsko-pomorskie</option>
+		<option value="3">lubuskie</option>
+		<option value="4">łódzkie</option>
+		<option value="5">lubelskie</option>
+		<option value="6">mazowieckie</option>
+		<option value="7">małopolskie</option>
+		<option value="8">opolskie</option>
+		<option value="9">podlaskie</option>
+		<option value="10">podkarpackie</option>
+		<option value="11">pomorskie</option>
+		<option value="12">śląskie</option>
+		<option value="13">świętokrzyskie</option>
+		<option value="14">warmińsko-mazurskie</option>
+		<option value="15">wielkopolskie</option>
+		<option value="16">zachodniopomorskie</option>
+</select>
+<select name="town" id="town">
+		<option value="">-- Wszystkie --</option>
+</select>

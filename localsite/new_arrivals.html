@@ -1,0 +1,3 @@
+{% for product in new_arrivals %}
+    <ul><a href="{{ product.get_absolute_url }}">{{product.translated_name}}</a></ul>
+{% endfor %}

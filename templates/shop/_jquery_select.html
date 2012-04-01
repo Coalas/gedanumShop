@@ -1,0 +1,29 @@
+$(document).ready(function(){ 
+    $("select#category").change(function(){ 
+        // Post string 
+        var post_string = "type=" + $(this).val(); 
+ 
+        // Send the request and update sub category dropdown 
+        $.ajax({ 
+            type: "POST", 
+            data: post_string, 
+            dataType: "json", 
+            cache: false, 
+            url: 'json.php', 
+            timeout: 2000, 
+            error: function() { 
+                alert("Failed to submit"); 
+            }, 
+            success: function(data) {  
+                // Clear all options from sub category select 
+                $("select#sub_category option").remove(); 
+ 
+                // Fill sub category select 
+                $.each(data, function(i, j){ 
+                    var row = "<option value=\"" + j.value + "\">" + j.text + "</option>"; 
+                    $(row).appendTo("select#sub_category"); 
+                }); 
+            } 
+        }); 
+    });     
+});

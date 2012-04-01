@@ -20,7 +20,7 @@ LANGUAGE_CODE = 'pl-PL'
 LANGUAGES = (
    ('pl', gettext_noop('Polish')),
 )
-
+LOCALE_PATHS =''
 #These are used when loading the test data
 SITE_NAME = "simple"
 

@@ -1,6 +1,16 @@
 {% extends "base.html" %}
+{% load local_tags %}
 {% block content %}
  <h4 class="deco">Współpraca:</h4>
 
+
+<h1>New Arrivals</h1>
+    <ul>
+    {% show_new_arrivals 5 %}
+    </ul>
+<h1>Featured Items</h1>
+    <ul>
+    {% show_featured_items 5 %}
+    </ul>
 
 {% endblock %}

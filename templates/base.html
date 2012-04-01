@@ -21,7 +21,61 @@
     <title>{% block title %}{{ shop_name }}{% if pagetitle %}: {{ pagetitle }}{% endif %}{% endblock %}</title>
     {% include "shop/_jquery.html" %}
     {% plugin_point "page_head" %}
-    {% block extra-script %}{% endblock %}
+    {% block extra-script %}
+    <script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+	$.ajaxSetup({ 
+	     beforeSend: function(xhr, settings) {
+	         function getCookie(name) {
+	             var cookieValue = null;
+	             if (document.cookie && document.cookie != '') {
+	                 var cookies = document.cookie.split(';');
+	                 for (var i = 0; i < cookies.length; i++) {
+	                     var cookie = jQuery.trim(cookies[i]);
+	                     // Does this cookie string begin with the name we want?
+	                 if (cookie.substring(0, name.length + 1) == (name + '=')) {
+	                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+	                     break;
+	                 }
+	             }
+	         }
+	         return cookieValue;
+	         }
+	         if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+	             // Only send the token to relative URLs i.e. locally.
+	             xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+	         }
+	     } 
+	});
+	$("select#voivodship").change(function(){
+		// Post string
+		var post_string = "type=" + $(this).val();
+		// Send the request and update sub category dropdown
+		$.ajax({
+			type: "POST",
+	        data: post_string,
+	        dataType: "json",
+	        cache: false,
+	        url: '/load_towns',
+	        timeout: 2000,
+	        error: function() {
+	        	alert("Failed to submit "+post_string);
+	        },
+	        success: function(data) { 
+				// Clear all options from sub category select
+				$("select#town option").remove();
+
+				// Fill sub category select
+	        	$.each(data, function(i, j){
+					var row = "<option value=\"" + j.value + "\">" + j.text + "</option>";
+					$(row).appendTo("select#town");
+				});
+	        }
+		});
+	});	
+});
+</script>
+{% endblock %}
 </head>
 {% block body %}
 <body onload="draw();" {% if bodyid %} id="{{ bodyid }}"{% endif %}{% if bodyclass %} class="{{ bodyclass }}"{% endif %}>
