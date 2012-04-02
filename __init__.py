@@ -10,6 +10,8 @@ from product.utils import find_best_auto_discount
 from product.signals import index_prerender
 from django.utils import simplejson
 from django.views.decorators.csrf import csrf_protect
+from django.http import HttpResponse, HttpResponseNotAllowed
+
 def category_view_kamel(request, slug, parent_slugs='', template='product/category.html'):
     """Display the category, its child categories, and its products.
 
@@ -66,8 +68,10 @@ def update_session(request):
     return HttpResponse('ok')
 
 def load_towns(request):
-#    if not request.is_ajax():
-#        return HttpResponseNotAllowed(['POST'])
+    if not request.is_ajax() or not request.method=='POST':
+        return HttpResponseNotAllowed(['POST'])
     dol_dict = {'1': 'Czestochowa',}
-    json_string = simplejson.dumps(dol_dict)
+    kuj_dict = {'1': 'Wloclawek',}
+    voivoships = [dol_dict, kuj_dict]
+    json_string = simplejson.dumps(voivoships[int(request.POST['type'])-1])
     return HttpResponse(json_string, mimetype='application/json')
