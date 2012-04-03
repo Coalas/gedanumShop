@@ -67,12 +67,30 @@ $(document).ready(function(){
 
 				// Fill sub category select
 	        	$.each(data, function(i, j){
-					var row = "<option value=\"" + j.value + "\">" + j.text + "</option>";
+	        		
+					var row = "<option value=\"" + j + "\">" + j + "</option>";
 					$(row).appendTo("select#town");
 				});
 	        }
 		});
-	});	
+	});
+	$("select#town").change(function(){
+		var post_string = "type=" + $(this).val();
+		$.ajax({
+			type: "POST",
+	        data: post_string,
+	        dataType: "json",
+	        cache: false,
+	        url: '/update_session_town/',
+	        timeout: 2000,
+	        error: function() {
+	        	alert("Failed to update town "+post_string);
+	        },
+	        success: function(data) {
+				
+	        }
+		});
+	}
 });
 </script>
 {% endblock %}

@@ -60,11 +60,11 @@ def category_view_kamel(request, slug, parent_slugs='', template='product/catego
     index_prerender.send(Product, request=request, context=ctx, category=category, object_list=products)
     return render_to_response(template, context_instance=RequestContext(request, ctx))
 
-def update_session(request):
+def update_session_town(request):
     if not request.is_ajax() or not request.method=='POST':
         return HttpResponseNotAllowed(['POST'])
 
-    request.session['town'] = 'myvalue'
+    request.session['town'] = request.POST['town']
     return HttpResponse('ok')
 
 def load_towns(request):
